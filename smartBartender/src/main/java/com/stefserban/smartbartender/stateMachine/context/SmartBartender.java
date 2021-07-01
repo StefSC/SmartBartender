@@ -27,4 +27,8 @@ public class SmartBartender {
     public void doStateAction() {
         this.state.stateAction(this);
     }
+
+    public void shutdown() {
+        this.raspberryPiConfiguration.shutdown();
+    }
 }

@@ -1,5 +1,6 @@
 package com.stefserban.smartbartender.stateMachine.state;
 
+import com.pi4j.io.gpio.digital.DigitalInput;
 import com.stefserban.smartbartender.stateMachine.context.SmartBartender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,11 @@ public class ReadyState implements State {
         smartBartenderContext.setState(nextState);
     }
 
+    /**
+     * make it wait for user input somehow?
+     * should get the desired cocktail from the user and send it to the preparing state
+     * @param smartBartenderContext
+     */
     @Override
     public void stateAction(SmartBartender smartBartenderContext) {
         LOGGER.info("Ready for use! Waiting for user input");
@@ -34,4 +40,21 @@ public class ReadyState implements State {
         this.nextState(smartBartenderContext);
 
     }
+
+//    var buttonConfig = DigitalInput.newConfigBuilder(pi4j)
+//            .id("button")
+//            .name("Press button")
+//            .address(PIN_BUTTON)
+//            .pull(PullResistance.PULL_DOWN)
+//            .debounce(3000L)
+//            .provider("pigpio-digital-input");
+//    var button = pi4j.create(buttonConfig);
+//        button.addListener(e -> {
+//        if (e.state() == DigitalState.LOW) {
+//            pressCount++;
+//            console.println("Button was pressed for the " + pressCount + "th time");
+//        }
+//    });
+
+
 }

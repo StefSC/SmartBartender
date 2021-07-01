@@ -28,6 +28,7 @@ public class Main {
         while (smartBartender.getState().getClass() != ShutdownState.class) {
             smartBartender.doStateAction();
         }
+        smartBartender.shutdown();
 
 //        console.box("Hello Rasbian world !");
 //        Context pi4j = null;

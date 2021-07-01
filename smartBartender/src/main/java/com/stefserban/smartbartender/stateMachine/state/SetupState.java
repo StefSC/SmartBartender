@@ -20,17 +20,14 @@ public class SetupState implements State {
     @Override
     public void stateAction(SmartBartender smartBartenderContext) {
         LOGGER.info("Setting up the raspberry pi configuration");
-        //maybe read the config from a file here and set it in the context
-        Context pi4j = Pi4J.newAutoContext();
-        HashMap<String, Integer> pinout = new HashMap<String, Integer>();
-        pinout.put("TEQUILA", 27);
+//        Gson gson = new Gson();
+//        pinout.put("TEQUILA", 27);
 //        pinout.put("VODKA", 2);
 //        pinout.put("ORANGE JUICE", 3);
 //        pinout.put("SUGAR WATER", 4);
 
         RaspberryPiConfiguration raspberryPiConfiguration = new RaspberryPiConfiguration();
-        raspberryPiConfiguration.setPi4j(pi4j);
-        raspberryPiConfiguration.setIngredientToPinMap(pinout);
+        raspberryPiConfiguration.addPump("TEQUILA", 27);
 
         smartBartenderContext.setRaspberryPiConfiguration(raspberryPiConfiguration);
 
